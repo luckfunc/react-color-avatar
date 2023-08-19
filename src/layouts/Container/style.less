@@ -1,0 +1,18 @@
+@import 'src/styles/var';
+
+.container {
+  height: 100%;
+  padding-right: @layout-sider-width;
+
+  &.full {
+    padding-right: 0;
+  }
+
+  @media screen and (max-width: @screen-lg) {
+    padding-right: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: padding-right 0.2s;
+  }
+}
