@@ -71,3 +71,13 @@ export interface AvatarSettings {
     skinColors: string[]
     backgroundColor: string[]
 }
+
+// store
+export interface AppState {
+    history: {
+        past: AvatarOption[]
+        present: AvatarOption
+        future: AvatarOption[]
+    }
+    isCollapsed: boolean
+}
