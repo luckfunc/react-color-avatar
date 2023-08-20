@@ -1,11 +1,15 @@
-import Container from './layouts/Container';
+import Container from './layouts/container';
+import Sidebar from './layouts/sidebar';
+import { useAvatarOption } from './hooks';
 import './App.less';
 
 export default function App() {
+    const [avatarOption, setAvatarOption] = useAvatarOption();
 
-  return (
+    return (
       <main className='main'>
-          <Container/>
+          <Container avatarOption={avatarOption} setAvatarOption={setAvatarOption}/>
+          <Sidebar avatarOption={avatarOption} setAvatarOption={setAvatarOption}/>
       </main>
   )
 }
