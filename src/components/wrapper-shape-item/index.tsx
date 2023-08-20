@@ -20,9 +20,7 @@ export default function WrapperShapeItem(props: IProps) {
                     return (
                         <li
                             key={wrapperShape}
-                            className={`wrapper-shape__item ${
-                                wrapperShape === avatarOption.wrapperShape ? 'active' : ''
-                            }`}
+                            className='wrapper-shape__item'
                             title={`wrapperShape.${wrapperShape}`}
                             onClick={() => onSwitchWrapperShape(wrapperShape)}
                         >

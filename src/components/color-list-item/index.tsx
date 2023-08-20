@@ -23,14 +23,19 @@ export default function ColorListItem(props: IProps) {
                     return (
                         <li
                             key={bgColor}
-                            className={`color-list__item ${
-                                bgColor === avatarOption.background.color ? 'active' : ''
-                            } ${bgColor === 'transparent' ? 'transparent' : ''}`}
+                            className='color-list__item'
                             onClick={() => onSwitchBgColor(bgColor)}
                         >
                             <div
                                 style={{ background: bgColor }}
-                                className='bg-color'
+                                className={`bg-color ${
+                                    bgColor === avatarOption.background.color
+                                        ? 'active'
+                                        : bgColor === 'transparent'
+                                            ? 'transparent'
+                                            : ''
+                                }`}
+
                             />
                         </li>
                     )

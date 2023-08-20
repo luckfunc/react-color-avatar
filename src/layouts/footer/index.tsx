@@ -18,7 +18,7 @@ export default function Footer() {
 
             <div className='divider'>|</div>
 
-            {/*<div className='locale' @click='switchLocale'>*/}
+            <div className='locale' >简体中文</div>
         </footer>
     )
 }
