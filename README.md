@@ -6,4 +6,6 @@
 This project is based on [vue-color-avatar](https://github.com/Codennnn/vue-color-avatar)
 
 ## [Preview](https://avatar.gogogo7.com)
-![Preview](/src/images/img.png)
+<a href="https://avatar.gogogo7.com/">
+<img src="./src/images/img.png" alt="website-cover" />
+</a>
