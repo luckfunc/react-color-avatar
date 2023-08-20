@@ -1,0 +1,29 @@
+@import 'src/styles/var';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: @layout-footer-height;
+  padding: 0.8rem 0;
+  color: rgba(@color-text, 0.4);
+  font-weight: bold;
+  font-size: 0.8rem;
+
+  .divider {
+    padding: 0 1rem;
+  }
+
+  .locale {
+    cursor: pointer;
+  }
+
+  .link,
+  .locale {
+    transition: color 0.2s;
+
+    &:hover {
+      color: @color-text;
+    }
+  }
+}
