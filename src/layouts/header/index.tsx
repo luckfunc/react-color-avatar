@@ -1,4 +1,4 @@
-import Logo from '../../components/Logo';
+import Logo from '../../components/logo';
 import IconGitHub from '../../assets/icons/icon-github.svg';
 import './style.less'
 export default function Header() {
