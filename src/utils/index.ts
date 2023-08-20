@@ -1,6 +1,7 @@
 import { AvatarOption, None } from '../types';
-import { AVATAR_LAYER, NONE, SETTINGS } from '../constants';
-import { BeardShape, EarringsShape, Gender, GlassesShape, TopsShape } from '../enums';
+import { AVATAR_LAYER, NONE, SETTINGS, SPECIAL_AVATARS } from '../constants';
+import { BeardShape, EarringsShape, Gender, GlassesShape, TopsShape, WidgetType } from '../enums';
+import { previewData } from './dynamic-data';
 
 function getRandomValue<Item = unknown>(
     arr: Item[],
@@ -130,3 +131,40 @@ export function getRandomAvatarOption(
 
     return avatarOption
 }
+
+export const getWidgets = async (widgetType: WidgetType) => {
+    const list = SETTINGS[`${widgetType}Shape`];
+    const promises: Promise<string>[] = list.map(async (widget: string) => {
+        if (widget !== 'none' && previewData?.[widgetType]?.[widget]) {
+            return (await previewData[widgetType][widget]()).default
+        }
+        return 'X'
+    })
+    const svgRawList = await Promise.all(promises).then((raw) => {
+        return raw.map((svgRaw, i) => {
+            return {
+                widgetType,
+                widgetShape: list[i],
+                svgRaw,
+            }
+        })
+    })
+    return svgRawList
+}
+
+// 获取选中颜色
+export const getWidgetColor = (type: string, avatarOption: AvatarOption) => {
+    if (
+        type === WidgetType.Face ||
+        type === WidgetType.Tops ||
+        type === WidgetType.Clothes
+    ) {
+        return avatarOption.widgets[type]?.fillColor
+    } else return ''
+}
+
+//
+export function getSpecialAvatarOption(): AvatarOption {
+    return SPECIAL_AVATARS[Math.floor(Math.random() * SPECIAL_AVATARS.length)]
+}
+
