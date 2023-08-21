@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ActionType } from '../../enums';
 import IconBack from '../../assets/icons/icon-back.svg';
 import IconFlip from '../../assets/icons/icon-flip.svg';
 import IconNext from '../../assets/icons/icon-next.svg';
-import { AppState } from '../../types';
+// import { AppState } from '../../types';
 import './style.less'
 
 interface IProps {
@@ -13,9 +13,9 @@ interface IProps {
 
 export default function ActionBar(props: IProps) {
     const { setFlipped, flipped } = props;
-    const history = useSelector((state: AppState) => state.history);
-    const canUndo = history.past.length > 0;
-    const canRedo = history.future.length > 0;
+    // const history = useSelector((state: AppState) => state.history);
+    // const canUndo = history.past.length > 0;
+    // const canRedo = history.future.length > 0;
     const dispatch = useDispatch();
 
     const handleActionClick = (actionType: 'undo' | 'redo' | 'flip' | 'code') => {
@@ -42,13 +42,13 @@ export default function ActionBar(props: IProps) {
             type: ActionType.Undo,
             icon: IconBack,
             tip: 'Undo',
-            disabled: !canUndo,
+            disabled: true,
         },
         {
             type: ActionType.Redo,
             icon: IconNext,
             tip: 'Redo',
-            disabled: !canRedo,
+            disabled: true,
         },
         {
             type: ActionType.Flip,
