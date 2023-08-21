@@ -90,7 +90,7 @@ export default function PerfectScrollbar(props: IProps) {
     }
     // @ts-ignore
     return (
-        <div ref={scrollWrapper} style={{ position: 'relative', overflow: 'hidden' }} className='configurator-scroll'>
+        <div ref={scrollWrapper} style={{ position: 'relative', overflowY: 'auto', overflowX: 'hidden' }} className='configurator-scroll'>
             <div className='configurator'>
                 <SectionWrapper title='头像形状'>
                     <WrapperShapeItem avatarOption={avatarOption} setAvatarOption={setAvatarOption}/>
