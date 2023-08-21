@@ -191,3 +191,11 @@ export const SETTINGS: Readonly<AvatarSettings> = {
         ]
     },
 }
+export const DOWNLOAD_DELAY = 800;
+
+export const NOT_COMPATIBLE_AGENTS = [
+    'quark',
+    'micromessenger',
+    'weibo',
+    'douban',
+] as const
