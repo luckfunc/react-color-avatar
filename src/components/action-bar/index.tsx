@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionType } from '../../enums';
 import IconBack from '../../assets/icons/icon-back.svg';
-import IconCode from '../../assets/icons/icon-code.svg';
 import IconFlip from '../../assets/icons/icon-flip.svg';
 import IconNext from '../../assets/icons/icon-next.svg';
 import { AppState } from '../../types';
@@ -55,12 +54,7 @@ export default function ActionBar(props: IProps) {
             type: ActionType.Flip,
             icon: IconFlip,
             tip: 'Flip',
-        },
-        {
-            type: ActionType.Code,
-            icon: IconCode,
-            tip: 'Code',
-        },
+        }
     ];
     return (
         <div className='action-menu'>
