@@ -66,12 +66,6 @@ export default function Container(props: IProps) {
                                 下载头像
                             </button>
 
-                            <button
-                                type='button'
-                                className='action-btn action-multiple'
-                            >
-                                批量生成
-                            </button>
                         </div>
                     </div>
                     <Footer/>
