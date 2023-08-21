@@ -1,23 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
-import './style.less';
 import SectionWrapper from '../section-wrapper';
 import ColorListItem from '../color-list-item';
 import WrapperShapeItem from '../wrapper-shape-item';
 import { AvatarOption } from '../../types';
-import { WidgetType } from '../../enums';
-import { SETTINGS } from '../../constants';
-import { getWidgetColor, getWidgets } from '../../utils';
+import { BeardShape, WidgetShape, WidgetType } from '../../enums';
+import { getWidgets } from '../../utils';
+import { AVATAR_LAYER, SETTINGS } from '../../constants';
 
 interface IProps {
     avatarOption: AvatarOption
     setAvatarOption: (newOption: AvatarOption) => void
 }
 const sectionList = Object.values(WidgetType);
+
 export default function PerfectScrollbar(props: IProps) {
 
     const { avatarOption, setAvatarOption } = props;
     const scrollWrapper = useRef(null);
-    const [sections, setSections] = useState([]);
+    const [sections, setSections] = useState<{
+        widgetType: WidgetType
+        widgetList: {
+            widgetType: WidgetType
+            widgetShape: WidgetShape
+            svgRaw: string
+        }[]
+    }[]>([]);
 
     useEffect(() => {
         (async () => {
@@ -26,19 +33,17 @@ export default function PerfectScrollbar(props: IProps) {
                     return getWidgets(section);
                 })
             );
-
             const updatedSections = sectionList.map((li, i) => {
                 return {
                     widgetType: li,
                     widgetList: a[i],
                 };
             });
-            setSections(updatedSections); // TODO any type
+            setSections(updatedSections);
         })();
     }, []);
 
     const onSetWidgetColor = (widgetType: WidgetType, fillColor: string) => {
-        console.log('fillColor', fillColor);
         if (avatarOption.widgets?.[widgetType]) {
             setAvatarOption({
                 ...avatarOption,
@@ -50,22 +55,35 @@ export default function PerfectScrollbar(props: IProps) {
                     },
                 },
             })
-            console.log('color', {
+        }
+    }
+
+    //  设置身体
+    const onSetSwitchWidget = (widgetType: WidgetType, widgetShape: WidgetShape) =>{
+        if (widgetShape && avatarOption.widgets?.[widgetType]) {
+            setAvatarOption({
                 ...avatarOption,
                 widgets: {
                     ...avatarOption.widgets,
                     [widgetType]: {
                         ...avatarOption.widgets?.[widgetType],
-                        fillColor,
+                        shape: widgetShape,
+                        ...(widgetShape === BeardShape.Scruff
+                            ? { zIndex: AVATAR_LAYER['mouth'].zIndex - 1 }
+                            : undefined),
                     },
                 },
-            }.widgets.face?.fillColor)
+            })
         }
     }
-
-    //
-    const onSetSwitchWidget = (...args: any) => {
-        console.log('arg', args);
+    const  getWidgetColor = (type: string) => {
+        if (
+            type === WidgetType.Face ||
+            type === WidgetType.Tops ||
+            type === WidgetType.Clothes
+        ) {
+            return avatarOption.widgets[type]?.fillColor
+        } else return ''
     }
     if (!sections) {
         return null;
@@ -81,56 +99,43 @@ export default function PerfectScrollbar(props: IProps) {
                 <SectionWrapper title='背景颜色'>
                     <ColorListItem avatarOption={avatarOption} setAvatarOption={setAvatarOption}/>
                 </SectionWrapper>
-
-                {sections.map((s: any) => {
-                    console.log('s', s);
-                    return (
-                        <SectionWrapper key={s.widgetType} title={s.widgetType}>
-                            {
-                                s.widgetType === WidgetType.Tops ||
-                                s.widgetType === WidgetType.Face ||
-                                s.widgetType === WidgetType.Clothes ? (
-                                    <details className="color-picker" open={s.widgetType === WidgetType.Face}>
-                                        <summary className="color">{'颜色'}</summary>
-                                        <ul className="color-list">
-                                            {SETTINGS[
-                                                s.widgetType === WidgetType.Face ? 'skinColors' : 'commonColors'
-                                                ].map((fillColor) => (
+                {sections.map((s) => (
+                    <SectionWrapper key={s.widgetType} title={(`${s.widgetType}`)}>
+                        {
+                            s.widgetType === WidgetType.Tops ||
+                            s.widgetType === WidgetType.Face ||
+                            s.widgetType === WidgetType.Clothes ? (
+                                <details className={`color-picker ${s.widgetType === WidgetType.Face ? 'open' : ''}`}>
+                                    <summary className="color">{('colors')}</summary>
+                                    <ul className="color-list">
+                                        {SETTINGS[s.widgetType === WidgetType.Face ? 'skinColors' : 'commonColors'].map(
+                                            (fillColor) => (
                                                 <li
                                                     key={fillColor}
-                                                    className='color-list__item'
+                                                    className={`color-list__item ${fillColor === getWidgetColor(s.widgetType) ? 'active' : ''}`}
                                                     onClick={() => onSetWidgetColor(s.widgetType, fillColor)}
                                                 >
-                                                    <div style={{ background: fillColor }} className={`bg-color ${fillColor === getWidgetColor(s.widgetType, avatarOption) ? 'active' : ''}`}/>
+                                                    <div style={{ background: fillColor }} className="bg-color" />
                                                 </li>
-                                            ))}
-                                        </ul>
-                                    </details>
-                                ) : null
-                            }
-                            {
-                                <ul className='widget-list'>
-                                    {s.widgetList.map((it) => (
-                                        <li
-                                            key={it.widgetShape}
-                                            className={`list-item ${
-                                                it.widgetShape === avatarOption.widgets?.[s.widgetType]?.shape
-                                                    ? 'selected'
-                                                    : ''
-                                            }`}
-                                            onClick={() => onSetSwitchWidget(s.widgetType, it.widgetShape)}
-                                            dangerouslySetInnerHTML={{ __html: it.svgRaw }}
-                                        />
-                                    ))}
-                                </ul>
-                            }
-                        </SectionWrapper>
-                    )
-                })
-                }
-                <SectionWrapper title='身体'>
+                                            )
+                                        )}
+                                    </ul>
+                                </details>
+                            ) : null
+                        }
 
-                </SectionWrapper>
+                        <ul className='widget-list'>
+                            {s.widgetList.map((it) => (
+                                <li
+                                    key={it.widgetShape}
+                                    className={`list-item ${it.widgetShape === avatarOption.widgets?.[s.widgetType]?.shape ? 'selected' : ''}`}
+                                    onClick={() => onSetSwitchWidget(s.widgetType, it.widgetShape)}
+                                    dangerouslySetInnerHTML={{ __html: it.svgRaw }}
+                                />
+                            ))}
+                        </ul>
+                    </SectionWrapper>
+                ))}
             </div>
 
         </div>
