@@ -9,10 +9,11 @@ import './style.less';
 interface IReactColorAvatarProps {
     option: AvatarOption,
     size: 280,
-    style: CSSProperties
+    style: CSSProperties,
+    colorAvatarRef: any
 }
 export default function ReactColorAvatar(props: IReactColorAvatarProps) {
-   const { option: avatarOption, size: avatarSize, style } = props;
+   const { option: avatarOption, size: avatarSize, style, colorAvatarRef } = props;
    const [svgContent, setSvgContent] = useState('');
    useEffect(() => {
        (async () => {
@@ -101,7 +102,7 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
 
 
     return (
-        <div className={`react-color-avatar ${trueShape}`} style={{ width: avatarSize, height: avatarSize, ...style }}>
+        <div className={`react-color-avatar ${trueShape}`} ref={colorAvatarRef} style={{ width: avatarSize, height: avatarSize, ...style }}>
             <Background color={avatarOption.background.color}/>
             <div className='avatar-payload' dangerouslySetInnerHTML={{ __html: svgContent }}></div>
         </div>
