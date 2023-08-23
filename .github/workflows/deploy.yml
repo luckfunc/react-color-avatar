@@ -38,12 +38,12 @@ jobs:
       - name: build app
         run: pnpm run build
 
-      - name: copy dist file with scp
-        uses: appleboy/scp-action@v0.0.1
+      - name: scp-pipeline
+        uses: cross-the-world/scp-pipeline@v1.2.1
         with:
           host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_NAME }}
-          password: ${{ secrets.REMOTE_PASS }}
           port: 22
-          source: "docs/"
-          target: ${{ secrets.USER_TARGET }}
+          user: ${{ secrets.REMOTE_NAME }}
+          pass: ${{ secrets.REMOTE_PASS }}
+          local: "docs/"
+          remote: ${{ secrets.USER_TARGET }}
