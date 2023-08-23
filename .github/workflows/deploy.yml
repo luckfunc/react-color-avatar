@@ -44,5 +44,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_NAME }}
           pass: ${{ secrets.REMOTE_PASS }}
-          local: "dist"
-          remote: ${{ secrets.USER_TARGET }}
+          connect_timeout: 10s
+          local: 'dist'
+          # source: "docs/.vitepress/dist/*"
+          remote: ${{ secrets.REMOTE_TARGET }}
