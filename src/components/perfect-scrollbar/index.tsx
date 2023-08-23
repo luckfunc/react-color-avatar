@@ -112,10 +112,10 @@ export default function PerfectScrollbar(props: IProps) {
                                             (fillColor) => (
                                                 <li
                                                     key={fillColor}
-                                                    className={`color-list__item ${fillColor === getWidgetColor(s.widgetType) ? 'active' : ''}`}
+                                                    className={`color-list__item`}
                                                     onClick={() => onSetWidgetColor(s.widgetType, fillColor)}
                                                 >
-                                                    <div style={{ background: fillColor }} className="bg-color" />
+                                                    <div style={{ background: fillColor }} className={`bg-color ${fillColor === getWidgetColor(s.widgetType) ? 'active' : ''}`} />
                                                 </li>
                                             )
                                         )}
