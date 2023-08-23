@@ -38,11 +38,11 @@ jobs:
       - name: build app
         run: pnpm run build
 
-      - name: scp-pipeline
+      - name: Deploy to the server.
         uses: cross-the-world/scp-pipeline@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_NAME }}
           pass: ${{ secrets.REMOTE_PASS }}
-          local: "/dist/*"
+          local: "/dist"
           remote: ${{ secrets.USER_TARGET }}
