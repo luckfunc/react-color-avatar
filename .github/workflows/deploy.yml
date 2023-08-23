@@ -39,9 +39,10 @@ jobs:
         run: pnpm run build
 
       - name: scp-pipeline
-        uses: cross-the-world/scp-pipeline@v1.2.1
+        uses: cross-the-world/scp-pipeline@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_NAME }}
           pass: ${{ secrets.REMOTE_PASS }}
+          local: '/dist/*'
           remote: ${{ secrets.USER_TARGET }}
