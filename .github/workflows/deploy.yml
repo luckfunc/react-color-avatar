@@ -44,5 +44,5 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_NAME }}
           pass: ${{ secrets.REMOTE_PASS }}
-          local: '/dist/*'
+          local: "/dist/*"
           remote: ${{ secrets.USER_TARGET }}
