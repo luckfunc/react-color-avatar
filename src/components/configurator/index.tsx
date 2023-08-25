@@ -1,6 +1,7 @@
 import PerfectScrollbar from '../perfect-scrollbar';
+import { AvatarOption } from '@/types';
 import './style.less';
-import { AvatarOption } from '../../types';
+
 interface IProps {
     avatarOption: AvatarOption
     setAvatarOption: (newOption: AvatarOption) => void

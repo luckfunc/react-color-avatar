@@ -1,6 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { SET_AVATAR_OPTION } from '../../store/mutation-type';
-import type { AppState, AvatarOption } from '../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_AVATAR_OPTION } from '@/store/mutation-type';
+import type { AppState, AvatarOption } from '@/types';
 
 export default function useAvatarOption() {
     const avatarOption = useSelector((state: AppState) => state.history.present);

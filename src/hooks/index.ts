@@ -1,6 +1,7 @@
-import useSider from './useSider';
+import useSideBar from './useSideBar';
 import useAvatarOption from './useAvatarOption';
+
 export {
-    useSider,
+    useSideBar,
     useAvatarOption
 }

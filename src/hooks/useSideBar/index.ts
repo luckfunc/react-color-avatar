@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { SET_SIDER_STATUS } from '../../store/mutation-type';
-import { AppState } from '../../types'; // 请根据实际路径进行调整
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_SIDER_STATUS } from '@/store/mutation-type';
+import { AppState } from '@/types';
 
-export default function useSider() {
+export default function useSideBar() {
     const isCollapsed = useSelector((state: AppState) => state.isCollapsed);
     const dispatch = useDispatch();
 

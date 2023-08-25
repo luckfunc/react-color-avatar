@@ -1,8 +1,8 @@
-import { legacy_createStore, combineReducers } from 'redux';
-import { getRandomAvatarOption } from '../utils';
-import { WrapperShape } from '../enums';
-import { SCREEN } from '../constants';
-import { SET_AVATAR_OPTION, SET_SIDER_STATUS, REDO, UNDO } from './mutation-type';
+import { combineReducers, legacy_createStore } from 'redux';
+import { getRandomAvatarOption } from '@/utils';
+import { WrapperShape } from '@/enums';
+import { SCREEN } from '@/constants';
+import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from './mutation-type';
 
 
 // Initial State

@@ -1,7 +1,4 @@
-import { type NONE } from '../constants'
-
-export type None = typeof NONE
-
+import { type NONE } from '@/constants'
 import {
     type BeardShape,
     type ClothesShape,
@@ -16,7 +13,9 @@ import {
     type NoseShape,
     type TopsShape,
     type WrapperShape,
-} from '../../src/enums'
+} from '@/enums'
+
+export type None = typeof NONE
 
 interface Widget<Shape> {
     shape: Shape | None

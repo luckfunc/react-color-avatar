@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import SectionWrapper from '../section-wrapper';
-import ColorListItem from '../color-list-item';
-import WrapperShapeItem from '../wrapper-shape-item';
-import { AvatarOption } from '../../types';
-import { BeardShape, WidgetShape, WidgetType } from '../../enums';
-import { getWidgets } from '../../utils';
-import { AVATAR_LAYER, SETTINGS } from '../../constants';
+import { SectionWrapper, ColorListItem, WrapperShapeItem } from '@/components';
+import { AvatarOption } from '@/types';
+import { BeardShape, WidgetShape, WidgetType } from '@/enums';
+import { getWidgets } from '@/utils';
+import { AVATAR_LAYER, SETTINGS } from '@/constants';
 
 interface IProps {
     avatarOption: AvatarOption
