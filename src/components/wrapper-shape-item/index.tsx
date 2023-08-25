@@ -1,6 +1,6 @@
-import { WrapperShape } from '../../enums';
-import { SETTINGS } from '../../constants';
-import { AvatarOption } from '../../types';
+import { SETTINGS } from '@/constants';
+import { WrapperShape } from '@/enums';
+import { AvatarOption } from '@/types';
 
 interface IProps {
     avatarOption: AvatarOption

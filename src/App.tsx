@@ -1,6 +1,5 @@
-import Container from './layouts/container';
-import Sidebar from './layouts/sidebar';
-import { useAvatarOption } from './hooks';
+import { Container, Sidebar } from '@/layouts';
+import { useAvatarOption } from '@/hooks';
 import './App.less';
 
 export default function App() {

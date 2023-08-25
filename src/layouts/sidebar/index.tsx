@@ -1,8 +1,9 @@
+import { Configurator } from '@/components';
+import { AvatarOption } from '@/types';
+import { useSideBar } from '@/hooks';
 import IconRight from '../../assets/icons/icon-right.svg';
-import { useSider } from '../../hooks';
 import './style.less';
-import Configurator from '../../components/configurator';
-import { AvatarOption } from '../../types';
+
 interface IProps {
     avatarOption: AvatarOption
     setAvatarOption: (newOption: AvatarOption) => void
@@ -10,7 +11,7 @@ interface IProps {
 export default function Sidebar(props: IProps) {
   const { avatarOption, setAvatarOption } = props;
 
-  const { isCollapsed, openSider, closeSider } = useSider();
+  const { isCollapsed, openSider, closeSider } = useSideBar();
   return (
       <aside className={`sider ${isCollapsed ? 'collapsed' : ''}`}>
 

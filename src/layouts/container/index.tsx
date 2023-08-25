@@ -1,11 +1,9 @@
-import Header from '../header';
-import Footer from '../footer';
-import ReactColorAvatar from '../../components/react-color-avatar';
-import ActionBar from '../../components/action-bar';
 import { useRef, useState } from 'react';
-import { AvatarOption } from '../../types';
-import { getRandomAvatarOption, getSpecialAvatarOption } from '../../utils';
-import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '../../constants';
+import { ActionBar, ReactColorAvatar } from '@/components';
+import { Header, Footer } from '@/layouts';
+import { AvatarOption } from '@/types';
+import { getRandomAvatarOption, getSpecialAvatarOption } from '@/utils';
+import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '@/constants';
 import { name } from '../../../package.json';
 import './style.less'
 

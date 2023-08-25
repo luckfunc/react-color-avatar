@@ -1,6 +1,7 @@
-import Logo from '../../components/logo';
+import { Logo } from '@/components';
 import IconGitHub from '../../assets/icons/icon-github.svg';
 import './style.less'
+
 export default function Header() {
     return (
         <header className='header'>
