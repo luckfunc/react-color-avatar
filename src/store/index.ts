@@ -2,6 +2,7 @@ import { combineReducers, legacy_createStore } from 'redux';
 import { getRandomAvatarOption } from '@/utils';
 import { WrapperShape } from '@/enums';
 import { SCREEN } from '@/constants';
+import { ActionTypes } from '@/types';
 import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from './mutation-type';
 
 
@@ -16,7 +17,7 @@ const initialState = {
 };
 
 // Reducer
-const historyReducer = (state = initialState.history, action: any) => {
+const historyReducer = (state = initialState.history, action: ActionTypes) => {
     switch (action.type) {
         case SET_AVATAR_OPTION:
             return {
@@ -51,8 +52,7 @@ const historyReducer = (state = initialState.history, action: any) => {
     }
 };
 
-const isSiderCollapsedReducer = (state = initialState.isCollapsed, action: any) => {
-    // TOOD any类型
+const isSiderBarCollapsedReducer = (state = initialState.isCollapsed, action: ActionTypes) => {
     switch (action.type) {
         case SET_SIDER_STATUS:
             return action.payload;
@@ -64,7 +64,7 @@ const isSiderCollapsedReducer = (state = initialState.isCollapsed, action: any) 
 // Combine Reducers
 const rootReducer = combineReducers({
     history: historyReducer,
-    isCollapsed: isSiderCollapsedReducer,
+    isCollapsed: isSiderBarCollapsedReducer,
 });
 const store = legacy_createStore(rootReducer);
 // Store
