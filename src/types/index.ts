@@ -14,6 +14,7 @@ import {
     type TopsShape,
     type WrapperShape,
 } from '@/enums'
+import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from '@/store/mutation-type';
 
 export type None = typeof NONE
 
@@ -80,3 +81,9 @@ export interface AppState {
     }
     isCollapsed: boolean
 }
+
+// reducer action type
+export type ActionTypes = {
+    type: typeof REDO | typeof SET_AVATAR_OPTION | typeof SET_SIDER_STATUS | typeof UNDO,
+    payload: boolean
+};

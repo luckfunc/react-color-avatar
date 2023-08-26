@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, RefObject, useEffect, useState } from 'react';
 import { Background } from '@/components/widgets';
 import { WidgetType, WrapperShape } from '@/enums';
 import { AvatarOption } from '@/types';
@@ -10,11 +10,12 @@ interface IReactColorAvatarProps {
     option: AvatarOption,
     size: 280,
     style: CSSProperties,
-    colorAvatarRef: any
+    colorAvatarRef: RefObject<HTMLDivElement>
 }
 export default function ReactColorAvatar(props: IReactColorAvatarProps) {
    const { option: avatarOption, size: avatarSize, style, colorAvatarRef } = props;
-   const [svgContent, setSvgContent] = useState('');
+    const [svgContent, setSvgContent] = useState('');
+
    useEffect(() => {
        (async () => {
            const sortedList = Object.entries(avatarOption.widgets).sort(
@@ -93,12 +94,9 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
        }
    }
     const shapeClassNames = getWrapperShapeClassName();
-    const trueShape = Object.keys(shapeClassNames).find((shape: any) => {
-        // TODO any type
-        // @ts-ignore
-        return shapeClassNames[shape];
+    const trueShape = Object.keys(shapeClassNames).find((shape: string) => {
+        return shapeClassNames[shape as WrapperShape];
     });
-
 
 
     return (

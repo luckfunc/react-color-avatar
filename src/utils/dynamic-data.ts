@@ -11,7 +11,7 @@ import {
     NoseShape,
     TopsShape,
     WidgetType,
-} from '../enums'
+} from '@/enums'
 
 /** @internal */
 type Data = Readonly<{
