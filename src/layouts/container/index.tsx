@@ -15,8 +15,7 @@ export default function Container(props: IProps) {
     const { avatarOption, setAvatarOption } = props;
     const [flipped, setFlipped] = useState(false);
     const [downloading, setDownloading] = useState(false);
-    // const [imageDataURL, setImageDataURL] = useState('');
-    const colorAvatarRef = useRef(null);
+    const colorAvatarRef = useRef<HTMLDivElement>(null);
     const onRandomAvatar = () => {
         if (Math.random() <= TRIGGER_PROBABILITY) {
             let colorfulOption = getSpecialAvatarOption()
