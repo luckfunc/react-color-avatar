@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, RefObject, useEffect, useState } from 'react';
 import { Background } from '@/components/widgets';
 import { WidgetType, WrapperShape } from '@/enums';
 import { AvatarOption } from '@/types';
