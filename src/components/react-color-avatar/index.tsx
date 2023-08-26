@@ -10,11 +10,12 @@ interface IReactColorAvatarProps {
     option: AvatarOption,
     size: 280,
     style: CSSProperties,
-    colorAvatarRef: any
+    colorAvatarRef: RefObject<HTMLDivElement>
 }
 export default function ReactColorAvatar(props: IReactColorAvatarProps) {
    const { option: avatarOption, size: avatarSize, style, colorAvatarRef } = props;
-   const [svgContent, setSvgContent] = useState('');
+    const [svgContent, setSvgContent] = useState('');
+
    useEffect(() => {
        (async () => {
            const sortedList = Object.entries(avatarOption.widgets).sort(
