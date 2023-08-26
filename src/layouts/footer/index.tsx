@@ -1,3 +1,4 @@
+import { version } from '../../../package.json';
 import './style.less'
 
 export default function Footer() {
@@ -20,6 +21,10 @@ export default function Footer() {
             <div className='divider'>|</div>
 
             <div className='locale' >简体中文</div>
+
+            <div className='divider'>|</div>
+
+            <div className='version' >{ version }</div>
         </footer>
     )
 }
