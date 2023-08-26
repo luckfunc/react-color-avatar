@@ -11,7 +11,7 @@ const initialState = {
     history: {
         past: [],
         present: getRandomAvatarOption({ wrapperShape: WrapperShape.Squircle }),
-        future: [],
+        future: []
     },
     isCollapsed: window.innerWidth <= SCREEN.lg,
 };

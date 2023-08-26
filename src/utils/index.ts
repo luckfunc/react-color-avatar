@@ -1,6 +1,6 @@
-import { AvatarOption, None } from '../types';
-import { AVATAR_LAYER, NONE, SETTINGS, SPECIAL_AVATARS } from '../constants';
-import { BeardShape, EarringsShape, Gender, GlassesShape, TopsShape, WidgetType } from '../enums';
+import { AvatarOption, None } from '@/types';
+import { AVATAR_LAYER, NONE, SETTINGS, SPECIAL_AVATARS } from '@/constants';
+import { BeardShape, EarringsShape, Gender, GlassesShape, TopsShape, WidgetType } from '@/enums';
 import { previewData } from './dynamic-data';
 
 function getRandomValue<Item = unknown>(
