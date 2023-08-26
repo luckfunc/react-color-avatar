@@ -5,7 +5,7 @@ import { AvatarOption } from '@/types';
 import { getRandomAvatarOption, getSpecialAvatarOption } from '@/utils';
 import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '@/constants';
 import { name } from '../../../package.json';
-import './style.less'
+import './style.less';
 
 interface IProps {
     avatarOption: AvatarOption
@@ -18,39 +18,39 @@ export default function Container(props: IProps) {
     const colorAvatarRef = useRef<HTMLDivElement>(null);
     const onRandomAvatar = () => {
         if (Math.random() <= TRIGGER_PROBABILITY) {
-            let colorfulOption = getSpecialAvatarOption()
+            let colorfulOption = getSpecialAvatarOption();
             while (
                 JSON.stringify(colorfulOption) === JSON.stringify(avatarOption)
                 ) {
-                colorfulOption = getSpecialAvatarOption()
+                colorfulOption = getSpecialAvatarOption();
             }
-            colorfulOption.wrapperShape = avatarOption.wrapperShape
-            setAvatarOption(colorfulOption)
+            colorfulOption.wrapperShape = avatarOption.wrapperShape;
+            setAvatarOption(colorfulOption);
             // showConfetti()
         } else {
-            const randomOption = getRandomAvatarOption(avatarOption)
-            setAvatarOption(randomOption)
+            const randomOption = getRandomAvatarOption(avatarOption);
+            setAvatarOption(randomOption);
         }
     }
     const onDownload = async () => {
         try {
             setDownloading(true);
             const avatarEle =colorAvatarRef.current;
-            const userAgent = window.navigator.userAgent.toLowerCase()
+            const userAgent = window.navigator.userAgent.toLowerCase();
             const notCompatible = NOT_COMPATIBLE_AGENTS.some(
                 (agent) => userAgent.indexOf(agent) !== -1
             )
             if (avatarEle) {
                 const html2canvas = (await import('html2canvas')).default
                 const canvas = await html2canvas(avatarEle, {
-                    backgroundColor: null,
+                    backgroundColor: null
                 })
-                const dataURL = canvas.toDataURL()
+                const dataURL = canvas.toDataURL();
                 if (notCompatible) {
                     // setImageDataURL(dataURL); // TODO
                     // setDownloadModalVisible(true);// TODO
                 } else {
-                    const trigger = document.createElement('a')
+                    const trigger = document.createElement('a');
                     trigger.href = dataURL;
                     trigger.download = `${name}.png`;
                     trigger.click();
@@ -59,7 +59,7 @@ export default function Container(props: IProps) {
         } finally {
             setTimeout(() => {
                 setDownloading(false)
-            }, DOWNLOAD_DELAY)
+            }, DOWNLOAD_DELAY);
         }
 
     };
