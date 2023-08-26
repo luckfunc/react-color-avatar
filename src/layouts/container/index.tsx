@@ -42,7 +42,6 @@ export default function Container(props: IProps) {
             )
             if (avatarEle) {
                 const html2canvas = (await import('html2canvas')).default
-                // @ts-ignore
                 const canvas = await html2canvas(avatarEle, {
                     backgroundColor: null,
                 })

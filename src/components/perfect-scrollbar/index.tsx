@@ -86,7 +86,6 @@ export default function PerfectScrollbar(props: IProps) {
     if (!sections) {
         return null;
     }
-    // @ts-ignore
     return (
         <div ref={scrollWrapper} style={{ position: 'relative', overflowY: 'auto', overflowX: 'hidden' }} className='configurator-scroll'>
             <div className='configurator'>

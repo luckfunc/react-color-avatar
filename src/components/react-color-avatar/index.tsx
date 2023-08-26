@@ -1,7 +1,7 @@
 import { CSSProperties, RefObject, useEffect, useState } from 'react';
 import { Background } from '@/components/widgets';
-import { WidgetType, WrapperShape } from '@/enums';
-import { AvatarOption } from '@/types';
+import { WidgetShape, WidgetType, WrapperShape } from '@/enums';
+import { AvatarOption, Widget } from '@/types';
 import { AVATAR_LAYER, NONE } from '@/constants';
 import { widgetData } from '@/utils/dynamic-data';
 import './style.less';
@@ -20,24 +20,25 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
        (async () => {
            const sortedList = Object.entries(avatarOption.widgets).sort(
                ([prevShape, prev], [nextShape, next]) => {
-                   // @ts-ignore
-                   const ix = prev.zIndex ?? AVATAR_LAYER[prevShape]?.zIndex ?? 0;
-                   // @ts-ignore
-                   const iix = next.zIndex ?? AVATAR_LAYER[nextShape]?.zIndex ?? 0;
-                   return ix - iix;
+                   const prevZIndex = prev.zIndex ?? AVATAR_LAYER[prevShape as WidgetType]?.zIndex ?? 0;
+                   const nextZIndex = next.zIndex ?? AVATAR_LAYER[nextShape as WidgetType]?.zIndex ?? 0;
+                   return prevZIndex - nextZIndex;
                }
            );
 
-           const promises = sortedList.map(async ([widgetType, opt]) => {
-               // @ts-ignore
+           const getWidgetSvg = async (widgetType: WidgetType, opt: Widget<WidgetShape>) => {
                if (opt.shape !== NONE && widgetData?.[widgetType]?.[opt.shape]) {
-                   // @ts-ignore
                    return (await widgetData[widgetType][opt.shape]()).default;
                }
                return '';
+           };
+
+           const promises = sortedList.map(async ([widgetType, opt]) => {
+               return getWidgetSvg(widgetType as WidgetType, opt);
            });
 
-           let skinColor: any;
+
+           let skinColor: string | undefined;
 
            const svgRawList = await Promise.all(promises).then((raw) =>
                raw.map((svgRaw, i) => {

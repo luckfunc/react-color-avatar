@@ -18,14 +18,14 @@ import {
 
 export type None = typeof NONE
 
-interface Widget<Shape> {
+export interface Widget<Shape> {
     shape: Shape | None
     zIndex?: number
     fillColor?: string
     strokeColor?: string
 }
 
-type AvatarWidgets = {
+export type AvatarWidgets = {
     face: Widget<FaceShape>
     tops: Widget<TopsShape>
     ear: Widget<EarShape>
