@@ -15,3 +15,5 @@ This project is based on [vue-color-avatar](https://github.com/Codennnn/vue-colo
 <img src="./src/images/img.png" alt="website-cover" />
 </a>
 
+## LICENSE 
+Have a look at the [license file](./LICENSE) for details
