@@ -93,12 +93,9 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
        }
    }
     const shapeClassNames = getWrapperShapeClassName();
-    const trueShape = Object.keys(shapeClassNames).find((shape: any) => {
-        // TODO any type
-        // @ts-ignore
-        return shapeClassNames[shape];
+    const trueShape = Object.keys(shapeClassNames).find((shape: string) => {
+        return shapeClassNames[shape as WrapperShape];
     });
-
 
 
     return (
