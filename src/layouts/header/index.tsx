@@ -11,7 +11,7 @@ export default function Header() {
 
             <div className='header-right'>
                 <a
-                    href='https://github.com/Ddkkkk11/react-color-avatar'
+                    href='https://github.com/luckfunc/react-color-avatar'
                     target='_blank'
                     rel='nofollow noopener noreferrer'
                 >
