@@ -10,7 +10,7 @@ export default function Footer() {
                 Made by
                 <a
                     className='link'
-                    href='https://blog.gogogo7.com/'
+                    href='https://blog.luckfunc.com/'
                     target='_blank'
                     rel='nofollow noopener noreferrer'
                 >
