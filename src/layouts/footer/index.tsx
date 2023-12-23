@@ -14,7 +14,7 @@ export default function Footer() {
                     target='_blank'
                     rel='nofollow noopener noreferrer'
                 >
-                    顶级压力小子
+                    幸运函数
                 </a>
             </div>
 
