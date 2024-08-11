@@ -1,5 +1,5 @@
-import { type NONE } from '@/constants'
-import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from '@/store/mutation-type';
+import { type NONE } from '@constants';
+import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from '@store/mutation-type';
 import {
     type BeardShape,
     type ClothesShape,
@@ -13,8 +13,8 @@ import {
     type MouthShape,
     type NoseShape,
     type TopsShape,
-    type WrapperShape,
-} from '@/enums'
+    type WrapperShape
+} from '@enums';
 
 export type None = typeof NONE
 

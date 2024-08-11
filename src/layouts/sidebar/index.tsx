@@ -1,7 +1,7 @@
-import { Configurator } from '@/components';
-import { AvatarOption } from '@/types';
-import { useSideBar } from '@/hooks';
-import IconRight from '../../assets/icons/icon-right.svg';
+import { Configurator } from '@components';
+import { AvatarOption } from '@types';
+import { useSideBar } from '@hooks';
+import IconRight from '@assets/icons/icon-right.svg';
 import './style.less';
 
 interface IProps {

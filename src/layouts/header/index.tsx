@@ -1,6 +1,6 @@
-import { Logo } from '@/components';
-import IconGitHub from '../../assets/icons/icon-github.svg';
-import './style.less'
+import { Logo } from '@components';
+import IconGitHub from '@assets/icons/icon-github.svg';
+import './style.less';
 
 export default function Header() {
     return (

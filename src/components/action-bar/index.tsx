@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { ActionType } from '@/enums';
-import IconBack from '../../assets/icons/icon-back.svg';
-import IconFlip from '../../assets/icons/icon-flip.svg';
-import IconNext from '../../assets/icons/icon-next.svg';
-// import { AppState } from '../../types';
-import './style.less'
+import { ActionType } from '@enums';
+import IconBack from '@assets/icons/icon-back.svg';
+import IconFlip from '@assets/icons/icon-flip.svg';
+import IconNext from '@assets/icons/icon-next.svg';
+import './style.less';
 
 interface IProps {
     flipped: boolean
