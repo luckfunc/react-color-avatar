@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
-import { ActionBar, ReactColorAvatar } from '@/components';
-import { Header, Footer } from '@/layouts';
-import { AvatarOption } from '@/types';
-import { getRandomAvatarOption, getSpecialAvatarOption } from '@/utils';
-import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '@/constants';
+import { ActionBar, ReactColorAvatar } from '@components';
+import { Footer, Header } from '@layouts';
+import { AvatarOption } from '@types';
+import { getRandomAvatarOption, getSpecialAvatarOption } from '@utils';
+import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '@constants';
 import { name } from '../../../package.json';
 import './style.less';
 

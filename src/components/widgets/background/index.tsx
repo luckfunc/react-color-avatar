@@ -1,4 +1,4 @@
-import { AvatarOption } from '@/types';
+import { AvatarOption } from '@types';
 import './style.less';
 
 interface BackgroundProps {

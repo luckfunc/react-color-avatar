@@ -1,5 +1,5 @@
 import { version } from '../../../package.json';
-import './style.less'
+import './style.less';
 
 export default function Footer() {
     return (

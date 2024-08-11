@@ -1,8 +1,8 @@
 import { combineReducers, legacy_createStore } from 'redux';
-import { getRandomAvatarOption } from '@/utils';
-import { WrapperShape } from '@/enums';
-import { SCREEN } from '@/constants';
-import { ActionTypes } from '@/types';
+import { getRandomAvatarOption } from '@utils';
+import { WrapperShape } from '@enums';
+import { SCREEN } from '@constants';
+import { ActionTypes } from '@types';
 import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from './mutation-type';
 
 

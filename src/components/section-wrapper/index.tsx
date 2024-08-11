@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.less'
+import './style.less';
 
 interface IProps {
     title?: string

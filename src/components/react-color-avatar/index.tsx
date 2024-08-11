@@ -1,9 +1,9 @@
 import { CSSProperties, RefObject, useEffect, useState } from 'react';
-import { Background } from '@/components/widgets';
-import { WidgetShape, WidgetType, WrapperShape } from '@/enums';
-import { AvatarOption, Widget } from '@/types';
-import { AVATAR_LAYER, NONE } from '@/constants';
-import { widgetData } from '@/utils/dynamic-data';
+import { Background } from '@components/widgets';
+import { WidgetShape, WidgetType, WrapperShape } from '@enums';
+import { AvatarOption, Widget } from '@types';
+import { AVATAR_LAYER, NONE } from '@constants';
+import { widgetData } from '@utils/dynamic-data';
 import './style.less';
 
 interface IReactColorAvatarProps {

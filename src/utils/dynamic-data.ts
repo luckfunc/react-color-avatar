@@ -10,8 +10,8 @@ import {
     MouthShape,
     NoseShape,
     TopsShape,
-    WidgetType,
-} from '@/enums'
+    WidgetType
+} from '@enums';
 
 /** @internal */
 type Data = Readonly<{

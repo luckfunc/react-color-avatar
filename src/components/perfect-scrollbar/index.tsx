@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { SectionWrapper, ColorListItem, WrapperShapeItem } from '@/components';
-import { AvatarOption } from '@/types';
-import { BeardShape, WidgetShape, WidgetType } from '@/enums';
-import { getWidgets } from '@/utils';
-import { AVATAR_LAYER, SETTINGS } from '@/constants';
+import { ColorListItem, SectionWrapper, WrapperShapeItem } from '@components';
+import { AvatarOption } from '@types';
+import { BeardShape, WidgetShape, WidgetType } from '@enums';
+import { getWidgets } from '@utils';
+import { AVATAR_LAYER, SETTINGS } from '@constants';
 
 interface IProps {
     avatarOption: AvatarOption
