@@ -31,7 +31,7 @@ jobs:
         uses: pnpm/action-setup@v2.4.0
         with:
           # Version of pnpm to install
-          version: '7.X'
+          version: '8.X'
 
       - name: install deps
         run: pnpm i
