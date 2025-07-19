@@ -1,12 +1,27 @@
 {
   "name": "avatar",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
+  "homepage": "https://github.com/luckfunc/react-color-avatar#readme",
+  "bugs": {
+    "url": "https://github.com/luckfunc/react-color-avatar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luckfunc/react-color-avatar.git"
+  },
+  "funding": "https://github.com/sponsors/luckfunc",
+  "author": {
+    "name": "幸运函数",
+    "email": "85545304+luckfunc@users.noreply.github.com"
+  },
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
+    "dev": "vite",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,11 +37,9 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint": "^9.31.0",
+    "eslint-config-ali": "^16.3.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "less": "^4.2.0",
     "typescript": "^5.0.2",

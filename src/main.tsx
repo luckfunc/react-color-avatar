@@ -7,9 +7,9 @@ import './styles/reset.css';
 import '../src/styles/global.less';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <Provider store={store}>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </Provider>
-)
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
+);

@@ -4,8 +4,8 @@ import Header from '@layouts/header';
 import Sidebar from '@layouts/sidebar';
 
 export {
-    Container,
-    Footer,
-    Header,
-    Sidebar
-}
+  Container,
+  Footer,
+  Header,
+  Sidebar,
+};

@@ -8,12 +8,12 @@ import SectionWrapper from './section-wrapper';
 import WrapperShapeItem from './wrapper-shape-item';
 
 export {
-    ActionBar,
-    ColorListItem,
-    Configurator,
-    Logo,
-    PerfectScrollbar,
-    ReactColorAvatar,
-    SectionWrapper,
-    WrapperShapeItem
-}
+  ActionBar,
+  ColorListItem,
+  Configurator,
+  Logo,
+  PerfectScrollbar,
+  ReactColorAvatar,
+  SectionWrapper,
+  WrapperShapeItem,
+};

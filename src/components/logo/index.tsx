@@ -1,5 +1,5 @@
 import logoSvg from '@assets/logo.svg';
 
 export default function Logo() {
-    return <img src={logoSvg} alt="logo" />;
+  return <img src={logoSvg} alt="logo" />;
 }
