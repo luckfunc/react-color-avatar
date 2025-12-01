@@ -1,4 +1,4 @@
-import { AvatarOption, AvatarSettings } from '@types';
+import type { AvatarOption, AvatarSettings } from '@types';
 import {
   BeardShape,
   ClothesShape,
@@ -17,7 +17,7 @@ import {
 } from '@enums';
 
 export const AVATAR_LAYER: Readonly<{
-  [key in `${WidgetType}`]: { zIndex: number }
+  [key in `${WidgetType}`]: { zIndex: number };
 }> = {
   [WidgetType.Face]: {
     zIndex: 10,
@@ -195,9 +195,4 @@ export const SETTINGS: Readonly<AvatarSettings> = {
 };
 export const DOWNLOAD_DELAY = 800;
 
-export const NOT_COMPATIBLE_AGENTS = [
-  'quark',
-  'micromessenger',
-  'weibo',
-  'douban',
-] as const;
+export const NOT_COMPATIBLE_AGENTS = ['quark', 'micromessenger', 'weibo', 'douban'] as const;

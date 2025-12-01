@@ -2,9 +2,8 @@ import { combineReducers, legacy_createStore } from 'redux';
 import { getRandomAvatarOption } from '@utils';
 import { WrapperShape } from '@enums';
 import { SCREEN } from '@constants';
-import { ActionTypes } from '@types';
+import type { ActionTypes } from '@types';
 import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from './mutation-type';
-
 
 // Initial State
 const initialState = {
@@ -69,4 +68,3 @@ const rootReducer = combineReducers({
 const store = legacy_createStore(rootReducer);
 // Store
 export default store;
-

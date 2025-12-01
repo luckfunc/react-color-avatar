@@ -1,5 +1,5 @@
 import { Configurator } from '@components';
-import { AvatarOption } from '@types';
+import type { AvatarOption } from '@types';
 import { useSideBar } from '@hooks';
 import IconRight from '@assets/icons/icon-right.svg';
 import './style.less';
@@ -14,7 +14,6 @@ export default function Sidebar(props: IProps) {
   const { isCollapsed, openSider, closeSider } = useSideBar();
   return (
     <aside className={`sider ${isCollapsed ? 'collapsed' : ''}`}>
-
       <Configurator avatarOption={avatarOption} setAvatarOption={setAvatarOption} />
 
       <div className="trigger" onClick={isCollapsed ? () => openSider() : () => closeSider()}>

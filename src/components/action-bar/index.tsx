@@ -32,7 +32,7 @@ export default function ActionBar(props: IProps) {
         dispatch({ type: actionType });
         break;
       default:
-            // 默认处理
+      // 默认处理
     }
   };
 

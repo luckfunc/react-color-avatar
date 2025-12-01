@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { ActionBar, ReactColorAvatar } from '@components';
 import { Footer, Header } from '@layouts';
-import { AvatarOption } from '@types';
+import type { AvatarOption } from '@types';
 import { getRandomAvatarOption, getSpecialAvatarOption } from '@utils';
 import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from '@constants';
 import { name } from '../../../package.json';
@@ -19,9 +19,7 @@ export default function Container(props: IProps) {
   const onRandomAvatar = () => {
     if (Math.random() <= TRIGGER_PROBABILITY) {
       let colorfulOption = getSpecialAvatarOption();
-      while (
-        JSON.stringify(colorfulOption) === JSON.stringify(avatarOption)
-      ) {
+      while (JSON.stringify(colorfulOption) === JSON.stringify(avatarOption)) {
         colorfulOption = getSpecialAvatarOption();
       }
       colorfulOption.wrapperShape = avatarOption.wrapperShape;
@@ -37,9 +35,7 @@ export default function Container(props: IProps) {
       setDownloading(true);
       const avatarEle = colorAvatarRef.current;
       const userAgent = window.navigator.userAgent.toLowerCase();
-      const notCompatible = NOT_COMPATIBLE_AGENTS.some(
-        (agent) => userAgent.indexOf(agent) !== -1,
-      );
+      const notCompatible = NOT_COMPATIBLE_AGENTS.some((agent) => userAgent.indexOf(agent) !== -1);
       if (avatarEle) {
         const html2canvas = (await import('html2canvas')).default;
         const canvas = await html2canvas(avatarEle, {
@@ -90,18 +86,9 @@ export default function Container(props: IProps) {
                 随机生成
               </button>
 
-              <button
-                type="button"
-                className="action-btn action-download"
-                onClick={onDownload}
-              >
-                {
-                  downloading
-                    ? '下载头像中'
-                    : '下载头像'
-                }
+              <button type="button" className="action-btn action-download" onClick={onDownload}>
+                {downloading ? '下载头像中' : '下载头像'}
               </button>
-
             </div>
           </div>
           <Footer />

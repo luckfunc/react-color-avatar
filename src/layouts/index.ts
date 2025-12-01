@@ -3,9 +3,4 @@ import Footer from '@layouts/footer';
 import Header from '@layouts/header';
 import Sidebar from '@layouts/sidebar';
 
-export {
-  Container,
-  Footer,
-  Header,
-  Sidebar,
-};
+export { Container, Footer, Header, Sidebar };

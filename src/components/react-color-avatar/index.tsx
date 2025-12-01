@@ -1,7 +1,7 @@
-import { CSSProperties, RefObject, useEffect, useState } from 'react';
+import { type CSSProperties, type RefObject, useEffect, useState } from 'react';
 import { Background } from '@components/widgets';
-import { WidgetShape, WidgetType, WrapperShape } from '@enums';
-import { AvatarOption, Widget } from '@types';
+import { type WidgetShape, WidgetType, WrapperShape } from '@enums';
+import type { AvatarOption, Widget } from '@types';
 import { AVATAR_LAYER, NONE } from '@constants';
 import { widgetData } from '@utils/dynamic-data';
 import './style.less';
@@ -37,7 +37,6 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
         return getWidgetSvg(widgetType as WidgetType, opt);
       });
 
-
       let skinColor: string | undefined;
 
       const svgRawList = await Promise.all(promises).then((raw) =>
@@ -57,14 +56,13 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
             .replace('</svg>', '')
             .replaceAll('$fillColor', widgetFillColor || 'transparent');
 
-          return (
-            `
+          return `
             <g id="react-color-avatar-${sortedList[i][0]}">
               ${content}
             </g>
-           `
-          );
-        }));
+           `;
+        }),
+      );
 
       setSvgContent(`
        <svg
@@ -85,12 +83,9 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
 
   const getWrapperShapeClassName = () => {
     return {
-      [WrapperShape.Circle]:
-        avatarOption.wrapperShape === WrapperShape.Circle,
-      [WrapperShape.Square]:
-        avatarOption.wrapperShape === WrapperShape.Square,
-      [WrapperShape.Squircle]:
-        avatarOption.wrapperShape === WrapperShape.Squircle,
+      [WrapperShape.Circle]: avatarOption.wrapperShape === WrapperShape.Circle,
+      [WrapperShape.Square]: avatarOption.wrapperShape === WrapperShape.Square,
+      [WrapperShape.Squircle]: avatarOption.wrapperShape === WrapperShape.Squircle,
     };
   };
   const shapeClassNames = getWrapperShapeClassName();
@@ -99,8 +94,13 @@ export default function ReactColorAvatar(props: IReactColorAvatarProps) {
   });
 
   return (
-    <div className={`react-color-avatar ${trueShape}`} ref={colorAvatarRef} style={{ width: avatarSize, height: avatarSize, ...style }}>
+    <div
+      className={`react-color-avatar ${trueShape}`}
+      ref={colorAvatarRef}
+      style={{ width: avatarSize, height: avatarSize, ...style }}
+    >
       <Background color={avatarOption.background.color} />
+      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
       <div className="avatar-payload" dangerouslySetInnerHTML={{ __html: svgContent }} />
     </div>
   );

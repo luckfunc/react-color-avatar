@@ -1,14 +1,18 @@
-import { AvatarOption, None } from '@types';
+import type { AvatarOption, None } from '@types';
 import { AVATAR_LAYER, NONE, SETTINGS, SPECIAL_AVATARS } from '@constants';
-import { BeardShape, EarringsShape, Gender, GlassesShape, TopsShape, WidgetType } from '@enums';
+import {
+  BeardShape,
+  type EarringsShape,
+  Gender,
+  type GlassesShape,
+  TopsShape,
+  WidgetType,
+} from '@enums';
 import { previewData } from './dynamic-data';
 
 function getRandomValue<Item = unknown>(
   arr: Item[],
-  {
-    avoid = [],
-    usually = [],
-  }: { avoid?: unknown[]; usually?: Array<Item | 'none'> } = {},
+  { avoid = [], usually = [] }: { avoid?: unknown[]; usually?: Array<Item | 'none'> } = {},
 ): Item {
   const avoidValues = avoid.filter(Boolean);
   const filteredArr = arr.filter((it) => !avoidValues.includes(it));
@@ -55,15 +59,13 @@ export function getRandomAvatarOption(
   const avatarOption: AvatarOption = {
     gender,
 
-    wrapperShape:
-            presetOption?.wrapperShape || getRandomValue(SETTINGS.wrapperShape),
+    wrapperShape: presetOption?.wrapperShape || getRandomValue(SETTINGS.wrapperShape),
 
     background: {
       color: getRandomValue(SETTINGS.backgroundColor, {
         avoid: [
           useOption.background?.color,
-          (hairShape === TopsShape.Punk || hairShape === TopsShape.Fonze) &&
-                    hairColor, // Handle special cases and prevent color conflicts.
+          (hairShape === TopsShape.Punk || hairShape === TopsShape.Fonze) && hairColor, // Handle special cases and prevent color conflicts.
         ],
       }),
     },
@@ -154,11 +156,7 @@ export const getWidgets = async (widgetType: WidgetType) => {
 
 // 获取选中颜色
 export const getWidgetColor = (type: string, avatarOption: AvatarOption) => {
-  if (
-    type === WidgetType.Face ||
-        type === WidgetType.Tops ||
-        type === WidgetType.Clothes
-  ) {
+  if (type === WidgetType.Face || type === WidgetType.Tops || type === WidgetType.Clothes) {
     return avatarOption.widgets[type]?.fillColor;
   } else return '';
 };
@@ -167,4 +165,3 @@ export const getWidgetColor = (type: string, avatarOption: AvatarOption) => {
 export function getSpecialAvatarOption(): AvatarOption {
   return SPECIAL_AVATARS[Math.floor(Math.random() * SPECIAL_AVATARS.length)];
 }
-

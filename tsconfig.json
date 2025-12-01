@@ -40,7 +40,7 @@
       "@enums/*": ["./src/enums/*"],
       "@enums": ["./src/enums"],
       "@store/*": ["./src/store/*"],
-      "@store": ["./src/store"],
+      "@store": ["./src/store"]
     }
   },
   "include": ["src"],

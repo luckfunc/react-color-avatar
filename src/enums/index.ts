@@ -1,16 +1,16 @@
-export const enum Locale {
+export enum Locale {
   ZH = 'zh',
   EN = 'en',
 }
 
-export const enum ActionType {
+export enum ActionType {
   Undo = 'undo',
   Redo = 'redo',
   Flip = 'flip',
   Code = 'code',
 }
 
-export const enum Gender {
+export enum Gender {
   Male = 'male',
   Female = 'female',
   NotSet = 'notSet',
@@ -118,14 +118,14 @@ export enum ClothesShape {
 }
 
 export type WidgetShape =
-    | FaceShape
-    | TopsShape
-    | EarShape
-    | EarringsShape
-    | EyebrowsShape
-    | EyesShape
-    | NoseShape
-    | MouthShape
-    | BeardShape
-    | GlassesShape
-    | ClothesShape;
+  | FaceShape
+  | TopsShape
+  | EarShape
+  | EarringsShape
+  | EyebrowsShape
+  | EyesShape
+  | NoseShape
+  | MouthShape
+  | BeardShape
+  | GlassesShape
+  | ClothesShape;

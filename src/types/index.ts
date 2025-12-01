@@ -1,19 +1,19 @@
-import { type NONE } from '@constants';
-import { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from '@store/mutation-type';
-import {
-  type BeardShape,
-  type ClothesShape,
-  type EarringsShape,
-  type EarShape,
-  type EyebrowsShape,
-  type EyesShape,
-  type FaceShape,
-  type Gender,
-  type GlassesShape,
-  type MouthShape,
-  type NoseShape,
-  type TopsShape,
-  type WrapperShape,
+import type { NONE } from '@constants';
+import type { REDO, SET_AVATAR_OPTION, SET_SIDER_STATUS, UNDO } from '@store/mutation-type';
+import type {
+  BeardShape,
+  ClothesShape,
+  EarringsShape,
+  EarShape,
+  EyebrowsShape,
+  EyesShape,
+  FaceShape,
+  Gender,
+  GlassesShape,
+  MouthShape,
+  NoseShape,
+  TopsShape,
+  WrapperShape,
 } from '@enums';
 
 export type None = typeof NONE;

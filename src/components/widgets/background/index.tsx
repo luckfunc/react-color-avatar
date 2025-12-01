@@ -1,4 +1,4 @@
-import { AvatarOption } from '@types';
+import type { AvatarOption } from '@types';
 import './style.less';
 
 interface BackgroundProps {
@@ -6,7 +6,5 @@ interface BackgroundProps {
 }
 export default function Background(props: BackgroundProps) {
   const { color } = props;
-  return (
-    <div className="avatar-background" style={{ background: color }} />
-  );
+  return <div className="avatar-background" style={{ background: color }} />;
 }

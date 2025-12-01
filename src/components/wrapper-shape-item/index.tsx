@@ -1,6 +1,6 @@
 import { SETTINGS } from '@constants';
-import { WrapperShape } from '@enums';
-import { AvatarOption } from '@types';
+import type { WrapperShape } from '@enums';
+import type { AvatarOption } from '@types';
 
 interface IProps {
   avatarOption: AvatarOption;
@@ -15,23 +15,22 @@ export default function WrapperShapeItem(props: IProps) {
   };
   return (
     <ul className="wrapper-shape">
-      {
-        SETTINGS.wrapperShape.map((wrapperShape: WrapperShape) => {
-          return (
-            <li
-              key={wrapperShape}
-              className="wrapper-shape__item"
-              title={`wrapperShape.${wrapperShape}`}
-              onClick={() => onSwitchWrapperShape(wrapperShape)}
-            >
-              <div className={`shape ${wrapperShape} ${
+      {SETTINGS.wrapperShape.map((wrapperShape: WrapperShape) => {
+        return (
+          <li
+            key={wrapperShape}
+            className="wrapper-shape__item"
+            title={`wrapperShape.${wrapperShape}`}
+            onClick={() => onSwitchWrapperShape(wrapperShape)}
+          >
+            <div
+              className={`shape ${wrapperShape} ${
                 wrapperShape === avatarOption.wrapperShape ? 'active' : ''
               }`}
-              />
-            </li>
-          );
-        })
-      }
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 }

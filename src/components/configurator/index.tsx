@@ -1,5 +1,5 @@
 import PerfectScrollbar from '../perfect-scrollbar';
-import { AvatarOption } from '@types';
+import type { AvatarOption } from '@types';
 import './style.less';
 
 interface IProps {
@@ -8,7 +8,5 @@ interface IProps {
 }
 export default function Configurator(props: IProps) {
   const { avatarOption, setAvatarOption } = props;
-  return (
-    <PerfectScrollbar avatarOption={avatarOption} setAvatarOption={setAvatarOption} />
-  );
+  return <PerfectScrollbar avatarOption={avatarOption} setAvatarOption={setAvatarOption} />;
 }

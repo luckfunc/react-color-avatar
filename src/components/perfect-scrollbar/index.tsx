@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ColorListItem, SectionWrapper, WrapperShapeItem } from '@components';
-import { AvatarOption } from '@types';
-import { BeardShape, WidgetShape, WidgetType } from '@enums';
+import type { AvatarOption } from '@types';
+import { BeardShape, type WidgetShape, WidgetType } from '@enums';
 import { getWidgets } from '@utils';
 import { AVATAR_LAYER, SETTINGS } from '@constants';
 
@@ -14,14 +14,16 @@ const sectionList = Object.values(WidgetType);
 export default function PerfectScrollbar(props: IProps) {
   const { avatarOption, setAvatarOption } = props;
   const scrollWrapper = useRef(null);
-  const [sections, setSections] = useState<Array<{
-    widgetType: WidgetType;
-    widgetList: Array<{
+  const [sections, setSections] = useState<
+    Array<{
       widgetType: WidgetType;
-      widgetShape: WidgetShape;
-      svgRaw: string;
-    }>;
-  }>>([]);
+      widgetList: Array<{
+        widgetType: WidgetType;
+        widgetShape: WidgetShape;
+        svgRaw: string;
+      }>;
+    }>
+  >([]);
 
   useEffect(() => {
     (async () => {
@@ -74,11 +76,7 @@ export default function PerfectScrollbar(props: IProps) {
     }
   };
   const getWidgetColor = (type: string) => {
-    if (
-      type === WidgetType.Face ||
-      type === WidgetType.Tops ||
-      type === WidgetType.Clothes
-    ) {
+    if (type === WidgetType.Face || type === WidgetType.Tops || type === WidgetType.Clothes) {
       return avatarOption.widgets[type]?.fillColor;
     } else return '';
   };
@@ -86,7 +84,11 @@ export default function PerfectScrollbar(props: IProps) {
     return null;
   }
   return (
-    <div ref={scrollWrapper} style={{ position: 'relative', overflowY: 'auto', overflowX: 'hidden' }} className="configurator-scroll">
+    <div
+      ref={scrollWrapper}
+      style={{ position: 'relative', overflowY: 'auto', overflowX: 'hidden' }}
+      className="configurator-scroll"
+    >
       <div className="configurator">
         <SectionWrapper title="头像形状">
           <WrapperShapeItem avatarOption={avatarOption} setAvatarOption={setAvatarOption} />
@@ -96,35 +98,37 @@ export default function PerfectScrollbar(props: IProps) {
           <ColorListItem avatarOption={avatarOption} setAvatarOption={setAvatarOption} />
         </SectionWrapper>
         {sections.map((s) => (
-          <SectionWrapper key={s.widgetType} title={(`${s.widgetType}`)}>
-            {
-              s.widgetType === WidgetType.Tops ||
-              s.widgetType === WidgetType.Face ||
-              s.widgetType === WidgetType.Clothes ? (
-                <details className={`color-picker ${s.widgetType === WidgetType.Face ? 'open' : ''}`}>
-                  <summary className="color">{('colors')}</summary>
-                  <ul className="color-list">
-                    {SETTINGS[s.widgetType === WidgetType.Face ? 'skinColors' : 'commonColors'].map(
-                      (fillColor) => (
-                        <li
-                          key={fillColor}
-                          className="color-list__item"
-                          onClick={() => onSetWidgetColor(s.widgetType, fillColor)}
-                        >
-                          <div style={{ background: fillColor }} className={`bg-color ${fillColor === getWidgetColor(s.widgetType) ? 'active' : ''}`} />
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </details>
-                ) : null
-            }
+          <SectionWrapper key={s.widgetType} title={`${s.widgetType}`}>
+            {s.widgetType === WidgetType.Tops ||
+            s.widgetType === WidgetType.Face ||
+            s.widgetType === WidgetType.Clothes ? (
+              <details className={`color-picker ${s.widgetType === WidgetType.Face ? 'open' : ''}`}>
+                <summary className="color">{'colors'}</summary>
+                <ul className="color-list">
+                  {SETTINGS[s.widgetType === WidgetType.Face ? 'skinColors' : 'commonColors'].map(
+                    (fillColor) => (
+                      <li
+                        key={fillColor}
+                        className="color-list__item"
+                        onClick={() => onSetWidgetColor(s.widgetType, fillColor)}
+                      >
+                        <div
+                          style={{ background: fillColor }}
+                          className={`bg-color ${fillColor === getWidgetColor(s.widgetType) ? 'active' : ''}`}
+                        />
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </details>
+            ) : null}
             <ul className="widget-list">
               {s.widgetList.map((it) => (
                 <li
                   key={it.widgetShape}
                   className={`list-item ${it.widgetShape === avatarOption.widgets?.[s.widgetType]?.shape ? 'selected' : ''}`}
                   onClick={() => onSetSwitchWidget(s.widgetType, it.widgetShape)}
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
                   dangerouslySetInnerHTML={{ __html: it.svgRaw }}
                 />
               ))}
