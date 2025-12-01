@@ -44,6 +44,6 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_NAME }}
           password: ${{ secrets.REMOTE_PASS }}
-          source: "dist/*"
           target: ${{ secrets.REMOTE_TARGET }}
+          source: "dist/"
           strip_components: 1
